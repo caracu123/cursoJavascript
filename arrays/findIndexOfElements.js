@@ -24,11 +24,12 @@ rl.question('What fish are you looking for? ', (answer) => {
     }    
   }
   // print didnt find fish
-  if (matchindex === -1) {
+  if (matchIndex === -1) {
     console.log(`Apologies, we didn't find your fish ${answer}`);
   }
+  // inform user of findings
   else {
-    console.log(`found your fish ${answer} at index ${matchIndex}`);
+    console.log(`Found your fish ${answer} at index ${matchIndex}`);
   }
   // INDEX OF method
   console.log (fish, answer, fish.indexOf(answer));
