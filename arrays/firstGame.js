@@ -1,3 +1,5 @@
+// https://www.npmjs.com/package/readline-sync
+
 var readlineSync = require('readline-sync');
 
 // ask user for their player name
@@ -16,10 +18,6 @@ for (let i=0; i < rowCount; i++){
     board[i].push('?');
   }
 }
-// print out board row by row
-for(let i = 0; i < rowCount; i++){
-  console.log(board[i]);
-}
 
 // ask user to guess a certain number of times
 const maxGuesses = 3;
@@ -30,7 +28,21 @@ while (userGuessesRemaining > 0) {
   console.log(`Guesses remaining: ${userGuessesRemaining}`);
 
   // ask the user for their next move
+  var nextMove = readlineSync.question(
+    'Enter "row" "column" (like: 3 2): '
+    ).split(" ");
   
+  // extract guesses to index arrays  
+  let rowGuess = +nextMove[0];
+  let columnGuess = +nextMove[1];
+
+  // mark the users guess on the board
+  board[rowGuess]
+  // print out board row by row
+  for(let i = 0; i < rowCount; i++){
+    console.log(board[i]);
+  }
+
   // turn is over, decrement guess
   userGuessesRemaining--;
 }
