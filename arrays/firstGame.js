@@ -19,6 +19,11 @@ for (let i=0; i < rowCount; i++){
   }
 }
 
+// print out board row by row
+for(let i = 0; i < rowCount; i++){
+  console.log(board[i]);
+}
+
 // ask user to guess a certain number of times
 const maxGuesses = 3;
 let userGuessesRemaining = maxGuesses;
