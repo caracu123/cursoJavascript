@@ -15,3 +15,7 @@ for (let i = stringy.length-1; i >= 0; i--){
   reverseStringy += stringy[i];
 }
 console.log(reverseStringy);
+
+// alternative for step 3
+const reverseStringy2 = stringy.split('').reverse().join('');
+console.log(reverseStringy2);
