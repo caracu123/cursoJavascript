@@ -1,7 +1,5 @@
+// include code to get user imput
 var readlineSync = require('readline-sync');
-
-// ask user for their player name
-var userName = readlineSync.question('Enter player name: ');
 
 // make world for user
 const worldWidth = 3
@@ -10,8 +8,29 @@ console.log('Empty world');
 console.log(world);
 
 // place user
-const position = Math.floor(worldWidth / 2);
+let position = Math.floor(worldWidth / 2);
 world[position] = 'P';
 console.log('Player joined');
 console.log(world);
 
+// ask user for movement direction
+var nextDirection = readlineSync.question(
+  'What direction would you like to go? '
+);
+console.log(nextDirection);
+
+//nullify players current position
+world[position] = ' ';
+
+// move the player to right
+if (nextDirection === 'right') {
+  position += 1;
+}
+// move player to the left
+else if (nextDirection === 'left') {
+  position -= 1;
+}
+
+// put player back in world
+world[position] = 'P';
+console.log(world);
