@@ -45,7 +45,7 @@ while(userWishesToContinue){
   var userInput = readlineSync.question(
     'Wanna continue?'
   );
-  //calculate result from input
+  //user wishes to quit
   if (userInput !== 'yes'){
     userWishesToContinue = false;
   }
