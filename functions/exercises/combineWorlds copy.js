@@ -36,9 +36,19 @@ const printWorld = (world) => {
     console.log(world[i]);
   }
 }
-// make copy of world 1
-const w1Copy = world1.slice();
-const w2Copy = world2.slice();
+
+// make copy of worlds
+var w1Copy = [];
+var w2Copy = [];
+function coypWorld (originalWorld, cloneWorld) {
+  for (let i = 0; i < originalWorld.length; i++) {
+    cloneWorld.push(originalWorld[i].slice())
+  }
+  return cloneWorld;
+}
+coypWorld(world1, w1Copy);
+coypWorld(world2, w2Copy);
+
 console.log(`TYPEOF:`, typeof w1Copy);
 // combine worlds function
 function combineWorlds (w1, w2) {
