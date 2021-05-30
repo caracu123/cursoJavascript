@@ -4,7 +4,9 @@ you to tell me about her
 */
 
 const squidLord = {
-  doSquidThings: () => console.log(`${this.name} goes BLOOP BLOOP`),
+  doSquidThings: function () {
+    console.log(`${this.name} goes BLOOP BLOOP`)
+  },
   howManyArms: 100,
   isDangerous: true,
   level: 1000000,
