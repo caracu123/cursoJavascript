@@ -1,6 +1,6 @@
 /*
 in a game a user has a weapon with a specific ammo count. Write a code that represents
-how the user interacts with the weapon. The player needs to be able to be able to:
+how the user interacts with the weapon. The player needs to be able to:
 
 - name the weapon ✓
 - see max ammo ✓
@@ -65,7 +65,7 @@ weapon.dmgLeft();
 weapon.reload();
 weapon.magazine();
 weapon.dmgLeft();
-// shoot 15 times
+// shoot 100 times
 weapon.shoot(100);
 weapon.magazine();
 weapon.dmgLeft();
