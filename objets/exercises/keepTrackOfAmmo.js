@@ -26,6 +26,7 @@ const weapon = {
     // if not enough bullets shoot as much as we can
     else if (ammoCount > this.currentAmmo && this.currentAmmo !== 0) {
       console.log(`Shooting ${this.currentAmmo} ammo,`, `PEW!!!`.repeat(this.currentAmmo));
+      this.currentAmmo = 0;
     }
     // if no bullets request reload
     else console.log("You don't have enough bullets. Reload.")
