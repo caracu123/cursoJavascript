@@ -49,30 +49,50 @@ class TicTacToe {
   }
 
   whoIsWinner() {
+    let winner = null;
     // check for winners in rows
     for (let i = 0; i < this.board.length; i++) {
       const row = this.board[i];
 
-      let xCount = 0;
-      let oCount = 0;
-      for (let j = 0; j < row.length; j++) {
-        if (row[j] === 'X') xCount++;
-        else if (row[j] === 'O') oCount++;
-      }
-
-      // check if anybody has won
-      if (xCount === 3) return 'X';
-      else if (oCount === 3) return 'O';
+      // check if 3 values are present in this row
+      winner = are3SameValuesPresent(row);
+      if (winner !== null) return winner;
     }
 
     // check if there is a winner along the diagonals
+    // south east
     const southEastDiagonal = [
       this.board[0][0], this.board[1][1], this.board[2][2]
     ];
+    winner = are3SameValuesPresent(southEastDiagonal);
+    if (winner !== null) return winner;
+
+    // north east
+    const northEastDiagonal = [
+      this.board[2][0], this.board[1][1], this.board[0][2]
+    ]
+    winner = are3SameValuesPresent(northEastDiagonal);
+    if (winner !== null) return winner;
 
     // if we get to here nobody won
     return 'Nobody';
   }
+}
+
+// determine whether 3 x's or 3 o's are present in a 3 element array
+const are3SameValuesPresent = arr => {
+  let xCount = 0;
+  let oCount = 0;
+  for (let i = 0; i < row.length; i++) {
+    if (row[i] === 'X') xCount++;
+    else if (row[i] === 'O') oCount++;
+  }
+
+  // check if anybody has won
+  if (xCount === 3) return 'X';
+  else if (oCount === 3) return 'O';
+
+  return null;
 }
 
 // ask user for empty space character
