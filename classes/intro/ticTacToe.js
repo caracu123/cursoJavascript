@@ -83,9 +83,9 @@ class TicTacToe {
 const are3SameValuesPresent = arr => {
   let xCount = 0;
   let oCount = 0;
-  for (let i = 0; i < row.length; i++) {
-    if (row[i] === 'X') xCount++;
-    else if (row[i] === 'O') oCount++;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === 'X') xCount++;
+    else if (arr[i] === 'O') oCount++;
   }
 
   // check if anybody has won
@@ -106,8 +106,22 @@ newGame.printBoard();
 console.log(`Spaces remaining: ${newGame.emptySpaces}`);
 
 // test board
-newGame.takeTurn('X', 1, 1);
-newGame.printBoard();
+// for (let i = 0; i < 3; i++) {
+//   newGame.takeTurn("O", 2, i);
+//   newGame.printBoard();
+//   console.log(`Winner: ${newGame.whoIsWinner()}`);
+// }
 
-newGame.takeTurn('O', 1, 1);
-newGame.printBoard();
+// test southEastDiagonal
+// for (let i = 0; i < 3; i++) {
+//   newGame.takeTurn("O", i, i);
+//   newGame.printBoard();
+//   console.log(`Winner: ${newGame.whoIsWinner()}`);
+// }
+
+// test northEastDiagonal
+for (let i = 0; i < 3; i++) {
+  newGame.takeTurn("O", 2-i, i);
+  newGame.printBoard();
+  console.log(`Winner: ${newGame.whoIsWinner()}`);
+}
