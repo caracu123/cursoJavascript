@@ -125,3 +125,10 @@ for (let i = 0; i < 3; i++) {
   newGame.printBoard();
   console.log(`Winner: ${newGame.whoIsWinner()}`);
 }
+
+for (let i = 0; i < 3; i++) {
+  const values = [];
+  for (let j = 0; j < 3; j++) {
+    values.push(board[j][i]);
+  }
+}
