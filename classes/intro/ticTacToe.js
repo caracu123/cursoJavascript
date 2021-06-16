@@ -41,6 +41,17 @@ class TicTacToe {
     }
   }
 
+  // randomly select empty space on board
+  randomlySelectOpenBoardSpace() {
+    let emptySpaces = [];
+    // scan board to collect all empty spaces
+    for (let i = 0; i < this.board.length; i++) {
+      for (let j = 0; j < this.board.length; j++) {
+        
+      }
+    }
+  }
+
   // allow player to mark the board at a specific position
   takeTurn(mark, row, column) {
     if (this.board[row][column] === this.empty) {
@@ -50,6 +61,10 @@ class TicTacToe {
 
   whoIsWinner() {
     let winner = null;
+
+    // /////////////////////
+    // rows
+    // /////////////////////
     // check for winners in rows
     for (let i = 0; i < this.board.length; i++) {
       const row = this.board[i];
@@ -59,6 +74,10 @@ class TicTacToe {
       if (winner !== null) return winner;
     }
 
+
+    // /////////////////////
+    // diagonals
+    // /////////////////////
     // check if there is a winner along the diagonals
     // south east
     const southEastDiagonal = [
@@ -73,6 +92,20 @@ class TicTacToe {
     ]
     winner = are3SameValuesPresent(northEastDiagonal);
     if (winner !== null) return winner;
+
+    // /////////////////////
+    // columns
+    // /////////////////////
+    // check the columns
+    for (let i = 0; i < 3; i++) {
+      const column = [];
+      for (let j = 0; j < 3; j++) {
+        column.push(this.board[j][i]);
+      }
+      // check if winner from this column
+      winner = are3SameValuesPresent(column);
+      if (winner !== null) return winner;      
+    }
 
     // if we get to here nobody won
     return 'Nobody';
@@ -120,15 +153,15 @@ console.log(`Spaces remaining: ${newGame.emptySpaces}`);
 // }
 
 // test northEastDiagonal
+// for (let i = 0; i < 3; i++) {
+//   newGame.takeTurn("O", 2-i, i);
+//   newGame.printBoard();
+//   console.log(`Winner: ${newGame.whoIsWinner()}`);
+// }
+
+// test columns
 for (let i = 0; i < 3; i++) {
-  newGame.takeTurn("O", 2-i, i);
+  newGame.takeTurn("X", i, 0);
   newGame.printBoard();
   console.log(`Winner: ${newGame.whoIsWinner()}`);
-}
-
-for (let i = 0; i < 3; i++) {
-  const values = [];
-  for (let j = 0; j < 3; j++) {
-    values.push(board[j][i]);
-  }
 }
