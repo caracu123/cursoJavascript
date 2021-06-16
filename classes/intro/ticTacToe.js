@@ -47,9 +47,13 @@ class TicTacToe {
     // scan board to collect all empty spaces
     for (let i = 0; i < this.board.length; i++) {
       for (let j = 0; j < this.board.length; j++) {
-        
+        if (this.board[i][j] === this.empty) {
+          // store empty spaces
+          emptySpaces.push({row: i, column: j});
+        }
       }
     }
+    return emptySpaces[Math.floor(Math.random() * emptySpaces.length)];
   }
 
   // allow player to mark the board at a specific position
@@ -59,6 +63,7 @@ class TicTacToe {
     }
   }
 
+  // check if someone won
   whoIsWinner() {
     let winner = null;
 
@@ -134,34 +139,41 @@ let emptyChar = readlineSync.question(
 );
 
 // create new board using class
-const newGame = new TicTacToe(emptyChar);
-newGame.printBoard();
-console.log(`Spaces remaining: ${newGame.emptySpaces}`);
+const game = new TicTacToe(emptyChar);
+game.printBoard();
+console.log(`Spaces remaining: ${game.emptySpaces}`);
 
 // test board
 // for (let i = 0; i < 3; i++) {
-//   newGame.takeTurn("O", 2, i);
-//   newGame.printBoard();
-//   console.log(`Winner: ${newGame.whoIsWinner()}`);
+//   game.takeTurn("O", 2, i);
+//   game.printBoard();
+//   console.log(`Winner: ${game.whoIsWinner()}`);
 // }
 
 // test southEastDiagonal
 // for (let i = 0; i < 3; i++) {
-//   newGame.takeTurn("O", i, i);
-//   newGame.printBoard();
-//   console.log(`Winner: ${newGame.whoIsWinner()}`);
+//   game.takeTurn("O", i, i);
+//   game.printBoard();
+//   console.log(`Winner: ${game.whoIsWinner()}`);
 // }
 
 // test northEastDiagonal
 // for (let i = 0; i < 3; i++) {
-//   newGame.takeTurn("O", 2-i, i);
-//   newGame.printBoard();
-//   console.log(`Winner: ${newGame.whoIsWinner()}`);
+//   game.takeTurn("O", 2-i, i);
+//   game.printBoard();
+//   console.log(`Winner: ${game.whoIsWinner()}`);
 // }
 
 // test columns
 for (let i = 0; i < 3; i++) {
-  newGame.takeTurn("X", i, 0);
-  newGame.printBoard();
-  console.log(`Winner: ${newGame.whoIsWinner()}`);
+  game.takeTurn("X", i, 0);
+  game.printBoard();
+  console.log(`Winner: ${game.whoIsWinner()}`);
+}
+
+// fill up an empty spot randomly for each remaining spot
+while (game.emptySpaces > 0) {
+  const randomMove = game.randomlySelectOpenBoardSpace();
+  game.takeTurn('O', randomMove.row, randomMove.column);
+  game.printBoard();
 }
