@@ -13,7 +13,7 @@ starving
 */
 
 class Animal {
-  constructor(name, weight, fullnessOutOf10) {
+  constructor (name, weight, fullnessOutOf10, howFast = null) {
     this.name = name;
     this.weight = weight;
     this.howFast = null;
@@ -30,13 +30,45 @@ class Animal {
       this.hunger = 'full';
     }
   }
-}
 
-// all horses weigh 1500 pounds and are half full to start (5/10 fullness)
-class Horse extends Animal {
-  constructor(name) {
-    super(name, '1500lbs', 5);
+  // make animal sound
+  makeMouthSound () {
+    console.log(`${this.name} goes "ugh"`);
   }
 }
 
-const babyHorse = new Horse('fluffy');
+// all Giant Rabbits weigh 1500 pounds and are half full to start (5/10 fullness)
+class GiantRabbit extends Animal {
+  constructor (name, furColour = 'brown') {
+    super(name, '1500lbs', 5, 'very fast');
+    this.furColour = furColour;
+  }
+
+  makeMouthSound () {
+    console.log(`${this.name} goes "thump thump"`);
+    super.makeMouthSound();
+  }
+}
+
+// tiny tortoises weigh 20lbs, are full by default and they're extremely slow
+
+class TinyTortoise extends Animal {
+  constructor (name, shellNiceness) {
+    super(name, '20lbs', 10, 'extremely slow');
+    this.shellNiceness = shellNiceness;
+  }
+  makeMouthSound () {
+    console.log(`${this.name} first shows off their ${this.shellNiceness} shell and then goes "meeehhh"`);
+  }
+}
+
+const vanillaAnimal = new Animal();
+// console.log(vanillaAnimal);
+
+const babyGiantRabbit = new GiantRabbit('fluffy');
+const daddyTinyTortoise = new TinyTortoise('scruffy', 'VERY nice');
+babyGiantRabbit.makeMouthSound();
+// daddyTinyTortoise.makeMouthSound();
+// vanillaAnimal.makeMouthSound();
+// console.log(babyGiantRabbit);
+// console.log(daddyTinyTortoise);
