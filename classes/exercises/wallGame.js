@@ -1,0 +1,1 @@
+const Wall = require('./Wall.js');
