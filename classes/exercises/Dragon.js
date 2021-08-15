@@ -8,7 +8,6 @@ class Dragon {
   constructor (name, damage, type) {
     this.name = name;
     this.damage = damage;
-    this.type = type;
   }
 
   // damage a wall based on dragon dmg
@@ -18,4 +17,24 @@ class Dragon {
   }
 }
 
-module.exports = Dragon;
+// fire dragon
+class FireDragon extends Dragon {
+  constructor (name, damage) {
+    super(name, damage);
+    this.type = 'fire';
+  }
+}
+
+// ice dragon
+class IceDragon extends Dragon {
+  constructor (name, damage) {
+    super(name, damage);
+    this.type = 'ice';
+  }
+}
+
+module.exports = {
+  RegularDragon: Dragon,
+  FireDragon: FireDragon,
+  IceDragon: IceDragon,
+}

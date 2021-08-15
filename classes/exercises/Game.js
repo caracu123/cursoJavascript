@@ -11,8 +11,14 @@ const Wall = require('./Wall.js');
 const wall = new Wall (10, `ice`, `fire`);
 wall.show();
 
-// create a dragon
-const dragon = new Dragon(`vicious`, 5, `fire`);
-console.log(dragon);
-dragon.attackWall(wall);
-wall.show();
+// create 3 dragons
+const regularDragon = new Dragon.RegularDragon(`vicious`, 1);
+const fireDragon = new Dragon.FireDragon('fire boy 24', 2);
+const IceDragon = new Dragon.IceDragon('icybuoy', 3);
+const allDragons = [regularDragon, fireDragon, IceDragon];
+
+// attack wall with all dragons
+for (let i = 0; i < allDragons.length; i++) {
+  allDragons[i].attackWall(wall);
+  wall.show();
+}
