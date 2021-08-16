@@ -15,8 +15,16 @@ class Wall {
     console.log('-'.repeat(40) + '\n\n');
   }
 
-  takeDamage (damage) {
-    this.currentHeight -= damage;
+  takeDamage (dragon) {
+    let appliedDamage = dragon.damage;
+    let dragonType = dragon.type;
+    let dragonName = dragon.name;
+    if (dragonType === this.weakAgainst) appliedDamage *= 2;
+    else if (dragonType === this.strongAgainst) appliedDamage = 0;
+    console.log(
+      `${dragonName} goes: "ROOOAAR!!" and attacks the wall for ${appliedDamage} ${dragonType} damage.`
+    );
+    this.currentHeight -= appliedDamage;
   }
 }
 

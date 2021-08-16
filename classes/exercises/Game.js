@@ -4,18 +4,19 @@ type property. Write a method that allows the drag. to attack a wall.
 This should make the dragon scream and inflict dmg to the wall
 */
 
-const Dragon = require(`./Dragon.js`);
+const Dragons = require(`./Dragon.js`);
 const Wall = require('./Wall.js');
 
 // create a wall
 const wall = new Wall (10, `ice`, `fire`);
 wall.show();
 
-// create 3 dragons
-const regularDragon = new Dragon.RegularDragon(`vicious`, 1);
-const fireDragon = new Dragon.FireDragon('fire boy 24', 2);
-const IceDragon = new Dragon.IceDragon('icybuoy', 3);
-const allDragons = [regularDragon, fireDragon, IceDragon];
+// create 4 dragons
+const regularDragon = new Dragons.RegularDragon(`vicious`, 1);
+const fireDragon = new Dragons.FireDragon('fire boy 24', 1);
+const iceDragon = new Dragons.IceDragon('icybuoy', 1);
+const electricDragon = new Dragons.ElectricDragon('pikachu', 1);
+const allDragons = [regularDragon, fireDragon, iceDragon, electricDragon];
 
 // attack wall with all dragons
 for (let i = 0; i < allDragons.length; i++) {

@@ -5,15 +5,15 @@ method should make the dragon do some kind of noise and then inflict dmg on
 the wall.
 */
 class Dragon {
-  constructor (name, damage, type) {
+  constructor (name, damage, type = `regular`) {
     this.name = name;
     this.damage = damage;
+    this.type = type;
   }
 
   // damage a wall based on dragon dmg
   attackWall (wall) {
-    console.log(`${this.name}: AAaaAagGGggGrrrRRrDDDssSS`);
-    wall.takeDamage(this.damage);
+    wall.takeDamage(this);
   }
 }
 
@@ -33,8 +33,18 @@ class IceDragon extends Dragon {
   }
 }
 
+// electric dragon
+class ElectricDragon extends Dragon {
+  constructor (name, damage) {
+    super (name, damage);
+    this.type = 'electricity';
+  }
+}
+
+// export dragons
 module.exports = {
   RegularDragon: Dragon,
   FireDragon: FireDragon,
   IceDragon: IceDragon,
+  ElectricDragon: ElectricDragon,
 }
