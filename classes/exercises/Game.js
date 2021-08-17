@@ -7,19 +7,38 @@ This should make the dragon scream and inflict dmg to the wall
 const Dragons = require(`./Dragon.js`);
 const Wall = require('./Wall.js');
 
-// create a wall
-const wall = new Wall (10, `ice`, `fire`);
-wall.show();
+// ask user how to setup wall (height, strong, weak)
 
-// create 4 dragons
-const regularDragon = new Dragons.RegularDragon(`vicious`, 1);
-const fireDragon = new Dragons.FireDragon('fire boy 24', 1);
-const iceDragon = new Dragons.IceDragon('icybuoy', 1);
-const electricDragon = new Dragons.ElectricDragon('pikachu', 1);
-const allDragons = [regularDragon, fireDragon, iceDragon, electricDragon];
+var readlineSync = require('readline-sync');
+const Dragon = require('./Dragon.js');
+ 
+// Wait for user's response.
+var height = +readlineSync.question('How tall will your wall be?: ');
+var strongAgainst = readlineSync.question('Select a strong type: ');
+var weakAgainst = readlineSync.question('Select a weak type: ');
 
-// attack wall with all dragons
-for (let i = 0; i < allDragons.length; i++) {
-  allDragons[i].attackWall(wall);
-  wall.show();
+// create wall
+const wall1 = new Wall (height, strongAgainst, weakAgainst);
+wall1.show();
+
+/*
+ask the user if they want to ad a dragon to the attack. ask for input
+to describe the dragon. if the dragon is not of type fire, ice or 
+electric, it will be regular. Otherwise create a dragon subclass 
+accordingly and add it to a dragon collection the user created.
+allow the user to stop adding dragons after each dragon creation.
+*/
+
+let dragons = [];
+let addDragon = 'y';
+while (addDragon === 'y') {
+  addDragon = readlineSync.question('Would you like to add a dragon?(y/n): ');
+  if (addDragon === 'n') break;
+  var name = readlineSync.question('Insert dragon name: ');
+  var damage = readlineSync.question('Insert dragon damage: ');
+  var type = readlineSync.question('Insert dragon type (empty for regular dragon): ');
+  
+  if (type === 'fire') {
+    let dragon = new Dragon 
+  }
 }
