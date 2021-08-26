@@ -16,8 +16,8 @@ var strongAgainst = readlineSync.question('Select a strong type: ');
 var weakAgainst = readlineSync.question('Select a weak type: ');
 
 // create wall
-const wall1 = new Wall (height, strongAgainst, weakAgainst);
-wall1.show();
+const wall = new Wall (height, strongAgainst, weakAgainst);
+wall.show();
 
 /*
 ask the user if they want to ad a dragon to the attack. ask for input
@@ -56,3 +56,33 @@ also the attack should stop if the walls fall. write a getter in the
 wall class to determine if it has fallen. in the end have some output
 determine who wins.
 */
+
+// ask how many attacks
+let attackCount = +readlineSync.question(
+  '\nHow many attack rounds will there be:'
+);
+console.log();
+
+// attack for correct number of rounds
+let wallDown = false;
+// for each round
+for (let i = 0; i < attackCount; i++) {
+  // for each dragon
+  for (let j = 0; j < dragons.length; j++) {
+    // attack/show wall
+    dragons[j].attackWall(wall);
+    wall.show();
+
+    // check if attacks should stop
+    if (wall.hasFallen) {
+      wallDown = true;
+      break;
+    }
+  }
+  // if a dragon defeated the wall stop attacks
+  if (wallDown) {
+    break;
+  }
+}
+
+console.log(`Winner: ${wallDown ? 'dragons' : 'wall'}`);

@@ -5,15 +5,26 @@ method should make the dragon do some kind of noise and then inflict dmg on
 the wall.
 */
 class RegularDragon {
-  constructor (name, damage, type = `regular`) {
+  constructor (name, damage) {
     this.name = name;
     this.damage = damage;
-    this.type = type;
   }
 
   // damage a wall based on dragon dmg
   attackWall (wall) {
-    wall.takeDamage(this);
+    let appliedDamage = this.damage;
+    const type = this.type;
+
+    // increase/decrease dragon dmg based on wall str/weak
+    if (type === wall.strongAgainst) appliedDamage = 0;
+    else if (type === wall.weakAgainst) appliedDamage *= 2;
+    
+    const dragonTypeForOutput = type === undefined ? 'regular' : type;
+    console.log(
+      `${this.name} (${dragonTypeForOutput}) goes AAAAAAAHH as it attacks the wall for ${appliedDamage}`
+    );
+
+    wall.takeDamage(appliedDamage);
   }
 }
 

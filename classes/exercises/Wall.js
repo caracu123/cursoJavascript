@@ -7,6 +7,12 @@ class Wall {
     this.weakAgainst = weakAgainst;
   }
 
+  // returns true if wall is down. false is wall is alive
+  get hasFallen () {
+    return this.currentHeight <= 0;
+  }
+
+  // print wall function
   show () {
     console.log(`Height: ${this.currentHeight}/${this.height} | Strong: ${this.strongAgainst} | Weak: ${this.weakAgainst}`);
     for (let i = 0; i < this.currentHeight; i++) {
@@ -14,17 +20,9 @@ class Wall {
     }
     console.log('-'.repeat(40) + '\n\n');
   }
-
-  takeDamage (dragon) {
-    let appliedDamage = dragon.damage;
-    let dragonType = dragon.type;
-    let dragonName = dragon.name;
-    if (dragonType === this.weakAgainst) appliedDamage *= 2;
-    else if (dragonType === this.strongAgainst) appliedDamage = 0;
-    console.log(
-      `${dragonName} goes: "ROOOAAR!!" and attacks the wall for ${appliedDamage} ${dragonType} damage.`
-    );
-    this.currentHeight -= appliedDamage;
+// wall take dmg function
+  takeDamage (damage) {
+  this.currentHeight -= damage;
   }
 }
 
