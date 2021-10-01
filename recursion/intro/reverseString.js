@@ -12,9 +12,25 @@ const reverseStringLikeLoop = (stringToReverse, nextIndex) => {
   if (nextIndex < 0) return '';
 
   // build up a recursive result
-  return stringToReverse[nextIndex] + reverseStringLikeLoop(stringToReverse, nextIndex - 1)
+  return stringToReverse[nextIndex] + 
+  reverseStringLikeLoop(stringToReverse, nextIndex - 1);
 }
 console.log(reverseStringLikeLoop("cat",'cat'.length - 1));
+/*
+reverseStringLikeLoop("cat",'cat'.length - 1)
+  reverseStringLikeLoop
+    stringToReverse = 'cat'
+    nextIndex = 3 - 1 = 2
+
+    => stringToReverse[nextIndex] + reverseStringLikeLoop(stringToReverse, nextIndex - 1);
+    => 'cat'[2] + reverseStringLikeLoop(stringToReverse, nextIndex - 1);
+    => 't' + reverseStringLikeLoop('cat', 1);
+    => 'ta' + reverseStringLikeLoop('cat', 0);
+    => 'tac' + reverseStringLikeLoop('cat', -1);
+    if (nextIndex(-1) < 0) return '';
+
+*/
+
 
 const reverseStringByChopping = string => {
   // get last character in string
