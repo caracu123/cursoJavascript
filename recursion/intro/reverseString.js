@@ -41,3 +41,27 @@ const reverseStringByChopping = string => {
   return lastChar + reverseStringByChopping(string.slice(0, -1));
 }
 console.log(reverseStringByChopping('dog'));
+
+  /*
+  console.log(reverseStringByChopping('dog'));
+
+    reverseStringByChopping
+      string = 'dog'
+      lastChar = 'g'
+
+      => 'g' + reverseStringByChopping("do");
+
+        reverseStringByChopping
+          string = 'do'
+          LastChar = 'o'
+
+          => lasChar + reverseStringByChopping(string.slice(0, -1))
+          => 'o' + reverseStringByChopping('d')
+          
+          now the if condition evaluates to true, so the las function
+          invocation returns only the last char, wich is 'd', like this:
+
+          => 'o' + 'd'
+  ------------------------
+
+  */
