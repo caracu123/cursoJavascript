@@ -8,6 +8,43 @@ const fibonacci = n => {
   // default behaviour
   return fibonacci(n - 1) + fibonacci(n - 2);
 }
+
+/*
+fibonacci(0) => 0
+fibonacci(1) => 1
+fibonacci(2) => 1
+fibonacci(3) => 2
+fibonacci(4) => 3
+fibonacci(5) => 5
+fibonacci(6) => 8
+
+trace for fibonacci (6) (left call first)
+  
+  fibonacci (6) (=>8)
+  n = 6
+  return fibonacci (5) (=>5) + fibonacci (4) (=>3)
+
+    fibonacci
+    n = 5
+    return fibonacci (4) (=>3) + fibonacci (3) (=>2)
+
+      fibonacci
+      n = 4
+      return fibonacci (3) (=>2) + fibonacci (2) (=>1)
+
+        fibonacci
+        n = 3
+        return fibonacci (2) (=>1)+ fibonacci (1) (=>1)
+
+          fibonacci
+          n = 2
+          return fibonacci (1) (=>1) + fibonacci (0) (=>0)
+
+            fibonacci
+            n = 1
+            return 1 (if condition)
+*/
+
 // Ask user which fibonacci number they want
 const whichFib = +readlineSync.question(
   'Which fibonacci number do you request?: '
@@ -32,4 +69,3 @@ if (
 else {
   console.log(`Fibonacci Number ${whichFib}: ${fibonacci(whichFib)}`);
 }
-
