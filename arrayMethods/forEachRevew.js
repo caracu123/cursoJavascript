@@ -1,6 +1,6 @@
 /*
 EXERCISE 1
-write a forEach taht, given an array of integers, prints out the cube of each element.
+write a forEach that, given an array of integers, prints out the cube of each element.
 [3, 6, 8].forEach(?)
 --------------------
 27
@@ -15,3 +15,6 @@ write a function that given an array of numbers, sums up each number in the arra
 15.3
 */
 
+let elements1 = [3, 6, 8, ];
+function cube (n) {n^2}
+elements1.forEach(currElem => cube(currElem));
